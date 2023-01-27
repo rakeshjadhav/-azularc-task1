@@ -4,33 +4,36 @@
 
 class TextInput{
 
-    protected $inputString = '';
-    //adds the given text to the current value
-    public function add($text)
-    {
-        $this->inputString = $this->inputString.''.$text;
+    protected $str = '';
+
+    //add the given text to the current value
+    public function add($text){
+
+        $this->str = $this->str.''.$text;
     }
 
     // returns the current value (string)
-    Public function getValue() 
-    {
-        return $this->inputString;
+    Public function getValue() {
+
+        return $this->str;
     }
 }
 
 
-//Inherits from TextInput
-class NumericInput extends TextInput {
 
-    protected $inputString = '';
+// inherits extends TextInput class
+class NumericInput extends TextInput {  
 
-    // Overrides the add method so that each non-numeric text is ignored.
-    public function add($text)
-    {
+    protected $str = '';
+
+    /* innore non-numeric characters by overrides that add method.*/
+    public function add($text){
+        
+        // check $text var is a number or a numeric
         if(is_numeric($text) == true){
 
-            $this->inputString = $this->inputString.''.$text;
-            return $this->inputString;
+            $this->str = $this->str.''.$text;
+            return $this->str;
         }
     }
 }
